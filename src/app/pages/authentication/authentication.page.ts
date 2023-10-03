@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {style} from "@angular/animations";
 
 @Component({
   selector: 'app-authentication',
@@ -12,4 +13,5 @@ export class AuthenticationPage implements OnInit {
   ngOnInit() {
   }
 
+    protected readonly style = style;
 }
