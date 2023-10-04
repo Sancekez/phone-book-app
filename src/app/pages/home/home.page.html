@@ -4,6 +4,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-button class="login-block__btn" (click)="goAuth()">Go back!</ion-button>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let contact of contacts">
+      <ion-label>{{ contact.displayName }}</ion-label>
+      <ion-label>{{ contact.phoneNumbers[0]?.value }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
