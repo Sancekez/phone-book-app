@@ -13,21 +13,22 @@
     <form class="auth-form" (ngSubmit)="onSubmit()">
       <ion-item>
         <ion-label position="floating">Enter email</ion-label>
-        <ion-input [(ngModel)]="login" type="text" name="login" required email></ion-input>
-        <div *ngIf="form.get('login')?.invalid && (form.get('login')?.dirty || form.get('login')?.touched)">
-          <div *ngIf="form.get('login')?.hasError('required')">Email is required.</div>
-          <div *ngIf="form.get('login')?.hasError('email')">Invalid email format.</div>
-        </div>
+        <ion-input [(ngModel)]="login" #loginField="ngModel" type="text" name="login" required email></ion-input>
       </ion-item>
+
+      <div *ngIf="loginField.invalid && (loginField.dirty || loginField.touched)">
+        <p *ngIf="loginField.hasError('required')">Email is required.</p>
+        <p *ngIf="loginField.hasError('email')">Invalid email format.</p>
+      </div>
 
       <ion-item>
         <ion-label position="floating">Enter password</ion-label>
-        <ion-input [(ngModel)]="password" type="password" name="password" required minlength="6"></ion-input>
-        <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)">
-          <div *ngIf="form.get('password')?.hasError('required')">Password is required.</div>
-          <div *ngIf="form.get('password')?.hasError('minlength')">Password must be at least 6 characters long.</div>
-        </div>
+        <ion-input [(ngModel)]="password" #passwordField="ngModel" type="password" name="password" required minlength="5"></ion-input>
       </ion-item>
+      <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)">
+        <p *ngIf="passwordField.hasError('required')">Password is required.</p>
+        <p *ngIf="passwordField.hasError('minlength')">Password must be at least 5 characters long.</p>
+      </div>
 
       <ion-button type="submit" class="login-block__btn">Log In</ion-button>
     </form>

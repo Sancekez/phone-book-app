@@ -18,7 +18,7 @@ export class LoginComponent  implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      password: ['', [Validators.required, minLengthValidator(6)]], // Применение кастомного валидатора
+      password: ['', [Validators.required, minLengthValidator(5)]], // Применение кастомного валидатора
     });
   }
   login: string = '';
