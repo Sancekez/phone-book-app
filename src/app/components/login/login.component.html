@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>authentication</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="login-block">
+    <ion-text class="login-block__title" color="primary">
+      <h3>Log In</h3>
+    </ion-text>
+
+    <form class="auth-form" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="floating">Enter email</ion-label>
+        <ion-input [(ngModel)]="login" type="text" name="login" required email></ion-input>
+        <div *ngIf="form.get('login')?.invalid && (form.get('login')?.dirty || form.get('login')?.touched)">
+          <div *ngIf="form.get('login')?.hasError('required')">Email is required.</div>
+          <div *ngIf="form.get('login')?.hasError('email')">Invalid email format.</div>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Enter password</ion-label>
+        <ion-input [(ngModel)]="password" type="password" name="password" required minlength="6"></ion-input>
+        <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)">
+          <div *ngIf="form.get('password')?.hasError('required')">Password is required.</div>
+          <div *ngIf="form.get('password')?.hasError('minlength')">Password must be at least 6 characters long.</div>
+        </div>
+      </ion-item>
+
+      <ion-button type="submit" class="login-block__btn">Log In</ion-button>
+    </form>
+  </ion-card>
+</ion-content>
+
+
+
