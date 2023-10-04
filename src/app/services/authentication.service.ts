@@ -8,7 +8,7 @@ export class AuthenticationService {
 
     login(login: string, password: string): boolean {
         // Проверьте логин и пароль здесь. Например, сравните с "admin/admin".
-        if (login === 'admin@a.com' && password === 'admin') {
+        if (login === 'a' && password === 'a') {
             this.isAuthenticated = true;
             return true;
         }

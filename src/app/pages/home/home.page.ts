@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {Contacts } from '@capacitor-community/contacts';
+import {Contacts} from "@capacitor-community/contacts";
+
 
 @Component({
   selector: 'app-home',
@@ -8,22 +8,41 @@ import {Contacts } from '@capacitor-community/contacts';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-    public contacts: any[] | undefined;
+    contacts: any[] = []
 
-    constructor(public router: Router) {}
+    constructor() {
+    }
 
     ngOnInit() {
-        this.printContactsData();
+        this.getContacts()
     }
 
-    printContactsData() {
-        // @ts-ignore
-        Contacts.getContacts().then(result => {
-            console.log(result);
-            for (const contact of result.contacts) {
-                // @ts-ignore
-                this.contacts.push(contact)
+    async getContacts() {
+        try {
+            const permission = await Contacts.requestPermissions();
+            if(!permission?.contacts) {
+                return
+            } else if(permission?.contacts == 'granted'){
+                const result = await Contacts.getContacts({
+                    projection: {
+                        name: true,
+                        phones: true,
+                        organization: true,
+                        birthday: true,
+                        note: true,
+                        emails: true,
+                        urls: true,
+                        postalAddresses: true,
+                        image: true
+                    }
+                })
+
+                this.contacts = result.contacts
             }
-        });
+        } catch (e) {
+            console.log(e)
+        }
     }
+
+
 }

@@ -6,10 +6,15 @@
 
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="contacts.length > 0">
     <ion-item *ngFor="let contact of contacts">
-      <ion-label>{{ contact.displayName }}</ion-label>
-      <ion-label>{{ contact.phoneNumbers[0]?.value }}</ion-label>
+      <ion-label>{{ contact?.name?.display }}</ion-label>
+      <p>
+        <ion-text *ngFor="let phone of contact?.phones; let i = index">
+          <span *ngIf="i > 0">, </span>{{phone?.number}}
+        </ion-text>
+      </p>
     </ion-item>
   </ion-list>
+<!--  {{permission | json}}-->
 </ion-content>
