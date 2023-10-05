@@ -86,7 +86,9 @@ export class HomePage implements OnInit {
                     }
                 })
 
-                this.contacts = result.contacts
+                this.contacts = result.contacts.filter(
+                    (contact) => contact.phones && contact.phones.length > 0
+                );
             }
         } catch (e) {
             console.log(e)
