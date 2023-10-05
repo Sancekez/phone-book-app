@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Home page</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="startScanner()" >
+        <ion-icon color="primary" name="qr-code"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [style.--background]="scanActive?'#00000000':'#ffffff'" >
+  <div *ngIf="!scanActive">
+    <ion-list *ngIf="contacts.length > 0" class="contacts-list">
+      <ion-item *ngFor="let contact of contacts" (click)="goToSecondlPage(contact)" class="contacts-list__item">
+        <ion-label>
+          <h2 class="contacts-list__item-title">{{ contact?.name?.display }}</h2>
+
+          <div>
+            <ion-text *ngFor="let phone of contact?.phones; let i = index">
+              <span *ngIf="i > 0">, </span>{{phone?.number}}
+            </ion-text>
+          </div>
+        </ion-label>
+
+      </ion-item>
+    </ion-list>
+
+    <app-spiner *ngIf="!contacts.length" />
+  </div>
+
+  <ion-row class="scan-button" *ngIf="scanActive">
+    <ion-col class="ion-no-padding">
+      <ion-button expand="full" (click)="stopScanner()">Stop</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <div class="scan-box" *ngIf="scanActive"></div>
+</ion-content>
