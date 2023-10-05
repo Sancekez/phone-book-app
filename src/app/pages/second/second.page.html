@@ -7,29 +7,25 @@
 <ion-content>
   <ion-item>
     <ion-label class="ion-text-wrap">
-      <h1 class="ion-text-wrap">Name: {{contact?.name?.display}}</h1>
+      Name: {{contact?.name?.display}}
     </ion-label>
   </ion-item>
 
   <ion-item *ngIf="contact?.organization?.company">
-    <ion-label>
-      <ion-text class="ion-text-wrap">
-        Organization: {{contact?.organization?.company}}
-      </ion-text>
+    <ion-label class="ion-text-wrap">
+      Organization: {{contact?.organization?.company}}
     </ion-label>
   </ion-item>
 
 
   <ion-item *ngIf="contact?.birthday">
-    <ion-label>
-      <ion-text class="ion-text-wrap">
-        Birthday:
-        {{contact?.birthday?.day < 10 ? ('0' + contact?.birthday?.day) : contact?.birthday?.day}}
-        .
-        {{contact?.birthday?.month < 10 ? ('0' + contact?.birthday?.month) : contact?.birthday?.month}}
-        .
-        {{contact?.birthday?.year}}
-      </ion-text>
+    <ion-label class="ion-text-wrap">
+      Birthday:
+      {{contact?.birthday?.day < 10 ? ('0' + contact?.birthday?.day) : contact?.birthday?.day}}
+      .
+      {{contact?.birthday?.month < 10 ? ('0' + contact?.birthday?.month) : contact?.birthday?.month}}
+      .
+      {{contact?.birthday?.year}}
     </ion-label>
   </ion-item>
 
@@ -70,10 +66,8 @@
   </ion-item>
 
   <ion-item *ngIf="contact?.note">
-    <ion-label>
-      <ion-text class="ion-text-wrap">
-        Note: {{contact?.note}}
-      </ion-text>
+    <ion-label class="ion-text-wrap">
+      Note: {{contact?.note}}
     </ion-label>
   </ion-item>
 </ion-content>
