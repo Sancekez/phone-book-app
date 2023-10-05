@@ -1,10 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>second page</ion-title>
+    <ion-title>Second page</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="second-page">
+  <ion-text class="second-page__title">Details about contact:</ion-text>
+
   <ion-item>
     <ion-label class="ion-text-wrap">
       Name: {{contact?.name?.display}}

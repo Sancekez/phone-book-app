@@ -14,18 +14,6 @@ export class SecondPage implements OnInit {
   }
 
   ngOnInit() {
-
-
-    // this.route.paramMap.subscribe((params) => {
-    //   const contactString = params.get('contact');
-    //   if (contactString) {
-    //     this.contact = JSON.parse(contactString);
-    //   } else {
-    //     this.contact = this.router?.getCurrentNavigation()?.extras?.state
-    //   }
-    //
-    // });
-    // this.contact = this.router?.getCurrentNavigation()?.extras?.state
   }
 
 }

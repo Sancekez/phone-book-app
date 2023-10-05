@@ -17,7 +17,7 @@ export class AuthenticationPage implements OnInit {
     this.router.navigate(['home']);
   }
 
-    protected readonly style = style;
-    protected readonly console = console;
+  protected readonly style = style;
+  protected readonly console = console;
   protected readonly alert = alert;
 }
