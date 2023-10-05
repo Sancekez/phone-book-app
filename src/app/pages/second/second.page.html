@@ -4,60 +4,76 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-item>
+    <ion-label class="ion-text-wrap">
+      <h1 class="ion-text-wrap">Name: {{contact?.name?.display}}</h1>
+    </ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="contact?.organization?.company">
     <ion-label>
-      <ion-text>
-        <h1>Name: {{contact?.name?.display}}</h1>
+      <ion-text class="ion-text-wrap">
+        Organization: {{contact?.organization?.company}}
       </ion-text>
-
-      <div>
-        <ion-text>
-          Organization: {{contact?.organization?.company}}
-        </ion-text>
-      </div>
-
-      <div *ngIf="contact?.birthday">
-        <ion-text >
-          Birthday: {{contact?.birthday?.day}}<span>.</span>{{contact?.birthday?.month}}<span>.</span>{{contact?.birthday?.year}}
-        </ion-text>
-      </div>
-
-      <div>
-        <ion-text>Phones: </ion-text>
-        <ion-text *ngFor="let phone of contact?.phones; let i = index">
-          <span *ngIf="i > 0">, </span>{{phone?.number}}
-        </ion-text>
-      </div>
-
-      <div>
-        <ion-text>Emails: </ion-text>
-        <ion-text *ngFor="let email of contact?.emails; let i = index">
-          <span *ngIf="i > 0">, </span>{{email?.address}}
-        </ion-text>
-      </div>
-
-      <div>
-        <ion-text>Addresses: </ion-text>
-        <ion-text *ngFor="let address of contact?.postalAddresses; let i = index">
-          <span *ngIf="i > 0">, </span>{{address?.street}}
-        </ion-text>
-      </div>
-
-      <div>
-        <ion-text>urls: </ion-text>
-        <ion-text *ngFor="let url of contact?.urls; let i = index">
-          <span *ngIf="i > 0">, </span>{{url}}
-        </ion-text>
-      </div>
-
-      <div>
-        <ion-text>
-          Note: {{contact?.note}}
-        </ion-text>
-      </div>
+    </ion-label>
+  </ion-item>
 
 
+  <ion-item *ngIf="contact?.birthday">
+    <ion-label>
+      <ion-text class="ion-text-wrap">
+        Birthday:
+        {{contact?.birthday?.day < 10 ? ('0' + contact?.birthday?.day) : contact?.birthday?.day}}
+        .
+        {{contact?.birthday?.month < 10 ? ('0' + contact?.birthday?.month) : contact?.birthday?.month}}
+        .
+        {{contact?.birthday?.year}}
+      </ion-text>
+    </ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="contact?.phones">
+    <ion-label>
+      <ion-text>Phones: </ion-text>
+      <ion-text *ngFor="let phone of contact?.phones; let i = index" class="ion-text-wrap">
+        <span *ngIf="i > 0">,</span>{{phone?.number}}
+      </ion-text>
+    </ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="contact?.emails">
+    <ion-label>
+      <ion-text>Emails: </ion-text>
+      <ion-text *ngFor="let email of contact?.emails; let i = index" class="ion-text-wrap">
+        <span *ngIf="i > 0">,</span>{{email?.address}}
+      </ion-text>
+    </ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="contact?.postalAddresses">
+    <ion-label>
+      <ion-text>Addresses: </ion-text>
+      <ion-text *ngFor="let address of contact?.postalAddresses; let i = index" class="ion-text-wrap">
+        <span *ngIf="i > 0">,</span>{{address?.street}}
+      </ion-text>
+    </ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="contact?.urls">
+    <ion-label>
+      <ion-text>Urls: </ion-text>
+      <ion-text *ngFor="let url of contact?.urls; let i = index" class="ion-text-wrap">
+        <span *ngIf="i > 0">,</span>{{url}}
+      </ion-text>
+    </ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="contact?.note">
+    <ion-label>
+      <ion-text class="ion-text-wrap">
+        Note: {{contact?.note}}
+      </ion-text>
     </ion-label>
   </ion-item>
 </ion-content>

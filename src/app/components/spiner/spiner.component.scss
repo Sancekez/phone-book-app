@@ -1,0 +1,10 @@
+.spiner-loading {
+
+  &__spiner {
+    display: block;
+    margin: 0 auto ;
+    width: 30px;
+    height: 30px;
+    transform: translateY(calc(50vh - 15px));
+  }
+}

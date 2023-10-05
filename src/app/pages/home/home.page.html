@@ -6,10 +6,10 @@
 
 
 <ion-content>
-  <ion-list *ngIf="contacts.length > 0">
-    <ion-item *ngFor="let contact of contacts" (click)="goToSecondlPage(contact)">
+  <ion-list *ngIf="contacts.length > 0" class="contacts-list">
+    <ion-item *ngFor="let contact of contacts" (click)="goToSecondlPage(contact)" class="contacts-list__item">
       <ion-label>
-        {{ contact?.name?.display }}
+        <h2 class="contacts-list__item-title">{{ contact?.name?.display }}</h2>
 
         <div>
           <ion-text *ngFor="let phone of contact?.phones; let i = index">
@@ -20,4 +20,10 @@
 
     </ion-item>
   </ion-list>
+
+  <app-spiner *ngIf="!contacts.length" />
+
 </ion-content>
+
+
+
