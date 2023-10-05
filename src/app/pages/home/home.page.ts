@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Contacts} from "@capacitor-community/contacts";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -10,11 +11,15 @@ import {Contacts} from "@capacitor-community/contacts";
 export class HomePage implements OnInit {
     contacts: any[] = []
 
-    constructor() {
+    constructor(private router: Router) {
     }
 
     ngOnInit() {
         this.getContacts()
+    }
+
+    goToSecondlPage(contact: any) {
+        this.router.navigate(['second-page'], { state: {contact: contact} });
     }
 
     async getContacts() {
@@ -33,7 +38,6 @@ export class HomePage implements OnInit {
                         emails: true,
                         urls: true,
                         postalAddresses: true,
-                        image: true
                     }
                 })
 

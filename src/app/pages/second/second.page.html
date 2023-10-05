@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>second page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>
+      <ion-text>
+        <h1>Name: {{contact?.name?.display}}</h1>
+      </ion-text>
+
+      <div>
+        <ion-text>
+          Organization: {{contact?.organization?.company}}
+        </ion-text>
+      </div>
+
+      <div *ngIf="contact?.birthday">
+        <ion-text >
+          Birthday: {{contact?.birthday?.day}}<span>.</span>{{contact?.birthday?.month}}<span>.</span>{{contact?.birthday?.year}}
+        </ion-text>
+      </div>
+
+      <div>
+        <ion-text>Phones: </ion-text>
+        <ion-text *ngFor="let phone of contact?.phones; let i = index">
+          <span *ngIf="i > 0">, </span>{{phone?.number}}
+        </ion-text>
+      </div>
+
+      <div>
+        <ion-text>Emails: </ion-text>
+        <ion-text *ngFor="let email of contact?.emails; let i = index">
+          <span *ngIf="i > 0">, </span>{{email?.address}}
+        </ion-text>
+      </div>
+
+      <div>
+        <ion-text>Addresses: </ion-text>
+        <ion-text *ngFor="let address of contact?.postalAddresses; let i = index">
+          <span *ngIf="i > 0">, </span>{{address?.street}}
+        </ion-text>
+      </div>
+
+      <div>
+        <ion-text>urls: </ion-text>
+        <ion-text *ngFor="let url of contact?.urls; let i = index">
+          <span *ngIf="i > 0">, </span>{{url}}
+        </ion-text>
+      </div>
+
+      <div>
+        <ion-text>
+          Note: {{contact?.note}}
+        </ion-text>
+      </div>
+
+
+    </ion-label>
+  </ion-item>
+</ion-content>

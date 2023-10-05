@@ -18,6 +18,10 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'second-page',
+    loadChildren: () => import('./pages/second/second.module').then( m => m.SecondPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },
